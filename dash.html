@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Liquid Glass Dashboard</title>
+  <link rel="stylesheet" href="dash.css" />
+</head>
+<body>
+  <!-- Pulsante centrale con logo -->
+  <div class="top-toggle">
+    <button id="logo-toggle">
+      <img src="logo.svg" alt="Logo" />
+    </button>
+  </div>
+
+  <!-- Sidebar liquida a sinistra -->
+  <aside class="sidebar" id="sidebar">
+    <nav class="menu">
+      <a href="#" class="menu-item">🏠 Home</a>
+      <a href="#" class="menu-item">📁 Altro</a>
+    </nav>
+    <div class="mode-buttons">
+      <button class="mode-btn" id="light-mode">🌞 Chiaro</button>
+      <button class="mode-btn" id="dark-mode">🌙 Notte</button>
+    </div>
+  </aside>
+
+  <!-- Contenuto principale -->
+  <main class="content">
+    <div class="glass-container">Contenuto 1</div>
+    <div class="glass-container">Contenuto 2</div>
+    <div class="glass-container">Contenuto 3</div>
+  </main>
+
+  <script>
+    const sidebar = document.getElementById('sidebar');
+    const logoToggle = document.getElementById('logo-toggle');
+    const lightMode = document.getElementById('light-mode');
+    const darkMode = document.getElementById('dark-mode');
+
+    logoToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+
+    lightMode.addEventListener('click', () => {
+      document.body.classList.remove('night');
+    });
+
+    darkMode.addEventListener('click', () => {
+      document.body.classList.add('night');
+    });
+  </script>
+</body>
+</html>

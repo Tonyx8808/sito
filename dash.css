@@ -1,0 +1,187 @@
+/* Reset base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(135deg, #fdf6e3, #e0f7fa, #fce4ec);
+  transition: background 1.5s ease;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  overflow-x: hidden;
+}
+
+/* Pulsante/logo in alto a sinistra */
+.top-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 1100;
+}
+
+#logo-toggle {
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(8px);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 12px rgba(0,0,0,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#logo-toggle img {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 3px rgba(0,0,0,0.4));
+  transition: transform 0.3s ease;
+}
+
+/* Effetto interattivo: ingrandisce e illumina al passaggio */
+#logo-toggle:hover {
+  background: rgba(255, 255, 255, 0.45);
+  transform: scale(1.1);
+  box-shadow: 0 0 18px rgba(255,255,255,0.6);
+}
+
+#logo-toggle:hover img {
+  transform: rotate(15deg) scale(1.1);
+}
+
+/* Sidebar a sinistra e centrata verticalmente */
+.sidebar {
+  position: fixed;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 250px;
+  padding: 20px;
+  border-radius: 0 20px 20px 0;
+  background: linear-gradient(145deg, rgba(30,30,30,0.6), rgba(60,60,60,0.4));
+  backdrop-filter: blur(12px);
+  color: white;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+  z-index: 999;
+}
+
+/* Quando è nascosta */
+.sidebar:not(.active) {
+  transform: translate(-90%, -50%);
+  opacity: 0.7;
+}
+
+/* Menu voci */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: #ddd;
+  font-weight: 600;
+  padding: 10px 15px;
+  border-radius: 12px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.menu-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* Bottoni modalità */
+.mode-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mode-btn {
+  border: none;
+  padding: 10px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.mode-btn:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+/* Contenuto principale */
+.content {
+  margin-left: 300px;
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 40px;
+  transition: opacity 0.4s ease;
+}
+
+/* Leggermente visibile quando sidebar attiva */
+.sidebar.active ~ .content {
+  opacity: 0.8;
+}
+
+/* Box contenuto */
+.glass-container {
+  padding: 20px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.35);
+  color: #222;
+  font-weight: bold;
+  text-align: center;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.glass-container:hover {
+  transform: scale(1.02);
+}
+
+/* Modalità notte */
+body.night {
+  background: linear-gradient(135deg, #1a1a1a, #2c2c2c);
+  color: #eee;
+}
+
+body.night .glass-container {
+  background: rgba(40, 40, 40, 0.5);
+  color: #eee;
+  box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+body.night .sidebar {
+  background: linear-gradient(145deg, rgba(20,20,20,0.6), rgba(50,50,50,0.4));
+}
+
+body.night .menu-item {
+  color: #bbb;
+}
+
+body.night .menu-item:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+body.night .mode-btn {
+  background: rgba(255,255,255,0.1);
+}
